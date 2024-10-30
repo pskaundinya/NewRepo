@@ -390,7 +390,7 @@ head(iris)</code></pre>
 ##                 
 ##                 
 ## </code></pre>
-<pre class="r"><code>#Building a new function: I am interested in transforming the variable Petal.Width to a relative scale where the mean = 1. This will be achieved through two steps. Creating a sub-dataset and then creating a function that transforms that sub-data set.I begin by loading the Tidyverse library to ensure access to dplyr.
+<pre class="r"><code>#Building a second new function: I am interested in transforming the variable Petal.Width to a relative scale where the mean = 1. This will be achieved through two steps. Creating a sub-dataset and then creating a function that transforms that sub-data set.I begin by loading the Tidyverse library to ensure access to dplyr.
 library(&quot;tidyverse&quot;)</code></pre>
 <pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ## ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -413,17 +413,17 @@ summary(iris_by_petalwidth)</code></pre>
 ##  Mean   :1.199                  
 ##  3rd Qu.:1.800                  
 ##  Max.   :2.500</code></pre>
-<pre class="r"><code>#Constructing a function: To convert Petal.Width into an index, I will have to divide each Petal.Width value by its mean where the mean = 1 post transformation. This is what the function &#39;data&#39; will achieve.
+<pre class="r"><code>#Constructing a function: To convert Petal.Width into an index, I will have to divide each Petal.Width value by its median where the median = 1 post transformation. This is what the function &#39;data&#39; will achieve.
 
-data &lt;- function(x) {x/mean(x)}
+data &lt;- function(x) {x/median(x)}
 
 #Applying function to our data subset
 iris_by_petalwidth$Petal.Width &lt;- data(iris_by_petalwidth$Petal.Width)
 
-#Double-checking if the transformation has worked. If so, the mean should be equal to 1
+#Double-checking if the transformation has worked. If so, the median should be equal to 1
 summary(iris_by_petalwidth$Petal.Width)</code></pre>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-## 0.08338 0.25014 1.08394 1.00000 1.50083 2.08449</code></pre>
+## 0.07692 0.23077 1.00000 0.92256 1.38462 1.92308</code></pre>
 <pre class="r"><code>#To use the data function, the argument must specify the variable of the given dataset to be transformed. Kindly remember to assign the output back to the variable to ensure the transformation is registered with the dataset! Thank you</code></pre>
 </div>
 
