@@ -1,0 +1,42 @@
+---
+title: "New Data Function"
+author: "LSE Candidate Number 46178"
+date: "2024-10-30"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+#Preview the Iris dataset
+head(iris)
+summary(iris)
+
+#Building a new function: I am interested in transforming the variable Petal.Width to a relative scale where the mean = 1. This will be achieved through two steps. Creating a sub-dataset and then creating a function that transforms that sub-data set.I begin by loading the Tidyverse library to ensure access to dplyr.
+library("tidyverse")
+
+#Creating a sub-dataset of Petal.Width
+
+iris_by_petalwidth <- iris %>% select(Petal.Width, Species)
+summary(iris_by_petalwidth)
+
+#Constructing a function: To convert Petal.Width into an index, I will have to divide each Petal.Width value by its mean where the mean = 1 post transformation. This is what the function 'data' will achieve.
+
+data <- function(x) {x/mean(x)}
+
+#Applying function to our data subset
+iris_by_petalwidth$Petal.Width <- data(iris_by_petalwidth$Petal.Width)
+
+#Double-checking if the transformation has worked. If so, the mean should be equal to 1
+summary(iris_by_petalwidth$Petal.Width)
+
+#To use the data function, the argument must specify the variable of the given dataset to be transformed. Kindly remember to assign the output back to the variable to ensure the transformation is registered with the dataset! Thank you
+```
