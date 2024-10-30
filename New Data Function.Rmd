@@ -30,10 +30,10 @@ summary(iris_by_petalwidth)
 
 #Constructing a function: To convert Petal.Width into an index, I will have to divide each Petal.Width value by its median where the median = 1 post transformation. This is what the function 'data' will achieve.
 
-data <- function(x) {x/median(x)}
+data_new <- function(x) {x/median(x)}
 
 #Applying function to our data subset
-iris_by_petalwidth$Petal.Width <- data(iris_by_petalwidth$Petal.Width)
+iris_by_petalwidth$Petal.Width <- data_new(iris_by_petalwidth$Petal.Width)
 
 #Double-checking if the transformation has worked. If so, the median should be equal to 1
 summary(iris_by_petalwidth$Petal.Width)
